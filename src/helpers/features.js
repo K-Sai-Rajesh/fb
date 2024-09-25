@@ -135,6 +135,12 @@ export const profileHeaders = [
   }
 ]
 
+export const button = {
+  backgroundColor: '#aaa',
+  color: 'text.secondary',
+  fontWeight: 'bold',
+  fontSize: '12px'
+}
 
 export const customerProfileHeaders = [
   {
@@ -184,7 +190,7 @@ export const securityHeaders = [
   },
 ]
 
-export const formKeys = [
+export const sellerField = [
   {
     id: "firstname",
     label: "First Name (*)",
@@ -252,14 +258,6 @@ export const formKeys = [
     error: Yup.string().required(`Please enter shop end time !`)
   },
   {
-    id: "category",
-    label: "Category (*)",
-    type: 'text',
-    isList: true,
-    colSize: 4,
-    error: Yup.string().required(`Select a category !`)
-  },
-  {
     id: "gst",
     label: "GST Number (optional)",
     type: 'number',
@@ -273,14 +271,6 @@ export const formKeys = [
     isList: false,
     colSize: 4,
     error: Yup.number().required(`Please enter phone number!`)
-  },
-  {
-    id: "password",
-    label: "Password (*)",
-    type: 'password',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter password !`)
   },
   {
     id: "latitude",
@@ -305,6 +295,22 @@ export const formKeys = [
     type: 'number',
     isList: false,
     colSize: 4
+  },
+  {
+    id: "password",
+    label: "Password (*)",
+    type: 'password',
+    isList: false,
+    colSize: 4,
+    error: Yup.string().required(`Please enter password !`)
+  },
+  {
+    id: "category",
+    label: "Category (*)",
+    type: 'text',
+    isList: true,
+    colSize: 4,
+    error: Yup.string().required(`Select a category !`)
   },
 ]
 

@@ -21,7 +21,7 @@ const CustomInputSelect = styled(InputBase)(({ error, theme }) => ({
     // fontWeight: 500,
     // lineHeight: "120%",
     position: "relative",
-    padding: "8px 8px",
+    padding: theme.spacing(1.35, 1.5),
     "&:focus": {
       borderColor: !error ? theme.palette.text.primary : "",
     },
@@ -53,7 +53,7 @@ function CustomSelectField(props) {
         variant="subtitle1Bold"
         sx={{
           textDecoration: 'none',
-          fontSize: '10px',
+          fontSize: '12px',
           fontWeight: 'bold'
         }}
       >
@@ -63,7 +63,7 @@ function CustomSelectField(props) {
         <NativeSelect
           multiline
           IconComponent={ArrowDropDownIcon}
-          input={<CustomInputSelect error={error} />}
+          input={<CustomInputSelect  error={error} />}
           {...props}
         >
           {children}

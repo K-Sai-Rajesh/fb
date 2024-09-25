@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.block {
+  display: block;
+  opacity: 0;
+  animation: fade 1s ease-in 1s 1 normal forwards
+}
+
+&::-webkit-scrollbar {
+  display: none;
+}

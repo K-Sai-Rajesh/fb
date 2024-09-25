@@ -17,8 +17,8 @@ const CustomInputField = styled((props) => (
         }
         sx={{
           textDecoration: 'none',
-          fontSize: '10px',
-          fontWeight: 'bold',
+          fontSize: '12px',
+          fontWeight: 'bolder',
           fontFamily:'Raleway'
         }}
         component="span"
