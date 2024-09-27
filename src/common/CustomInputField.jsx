@@ -53,8 +53,8 @@ const CustomInputField = styled((props) => (
     letterSpacing: "0.02em",
     padding: theme.spacing(1.25, 1.5),
     color: theme.palette.text.secondary,
-    backgroundColor: theme.palette.background.paper,
-    border: `0.25px solid ${theme.palette.text.secondary}`,
+    backgroundColor: "theme.palette.background.paper",
+    border: `1px solid #9E9E9E`,
     borderRadius: "4px",
     "& .MuiInputBase-input": {
       padding: 0,

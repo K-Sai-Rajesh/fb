@@ -1,18 +1,34 @@
-import { Box, Breadcrumbs, Chip, IconButton, Stack, Toolbar, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Avatar, Box, Breadcrumbs, Chip, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { button } from "../../helpers/features";
 import { SpaceDashboardOutlined } from "@mui/icons-material";
+import { useEffect, useRef } from "react";
+import { setheader } from "../../reducers/slices/loading";
+import { useDispatch } from "react-redux";
+import logo from '../../assets/images/futurebazaar.png'
 
 export default function HeaderNavbar({ setOpen }) {
+
+    const header = useRef()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setheader(header.current))
+    }, [header])
+
     return (
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography
-                fontFamily={'Raleway'}
-                color="#aaa"
-                fontWeight={'bold'}
-            >
-                futureBazaar
-            </Typography>
+        <Toolbar ref={header} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <IconButton>
+                <Avatar
+                    src={logo}
+                    onClick={() => navigate('/')}
+                    sx={{
+                        width: 46,
+                        height: 46
+                    }}
+                />
+            </IconButton>
             <Box
                 display={'flex'}
                 alignItems={'center'}
@@ -80,7 +96,9 @@ export default function HeaderNavbar({ setOpen }) {
                                 sx={{
                                     backgroundColor: 'transparent',
                                     color: '#fff',
-                                    textDecorationLine: 'underline'
+                                    textDecorationLine: 'underline',
+                                    fontFamily: 'Raleway',
+                                    fontWeight: 'bold'
                                 }}
                             />
                         </Link>

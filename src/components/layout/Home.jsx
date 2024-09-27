@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
@@ -24,7 +23,7 @@ export default function Home() {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <AppBar position="fixed" sx={{ backgroundColor: '#111' }}>
                 <HeaderNavbar toggleDrawer={toggleDrawer} setOpen={setOpen} />
             </AppBar>

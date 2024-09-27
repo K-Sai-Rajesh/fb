@@ -139,7 +139,8 @@ export const button = {
   backgroundColor: '#aaa',
   color: 'text.secondary',
   fontWeight: 'bold',
-  fontSize: '12px'
+  fontSize: '12px',
+  fontFamily: 'Raleway'
 }
 
 export const customerProfileHeaders = [
@@ -187,130 +188,6 @@ export const securityHeaders = [
     label: 'Confirm Password',
     type: 'password',
     disable: false
-  },
-]
-
-export const sellerField = [
-  {
-    id: "firstname",
-    label: "First Name (*)",
-    type: 'text',
-    colSize: 4,
-    isList: false,
-    error: Yup.string().required(`Please enter First Name !`)
-  },
-  {
-    id: "lastname",
-    label: "Last Name (*)",
-    type: 'text',
-    colSize: 4,
-    isList: false,
-    error: Yup.string().required(`Please enter Last Name !`)
-
-  },
-  {
-    id: "email",
-    label: "Email Address (*)",
-    type: 'text',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter Email !`)
-  },
-  {
-    id: "shopName",
-    label: "Shop Name (*)",
-    type: 'text',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter shop  name !`)
-
-  },
-  {
-    id: "shopPhoneNumber",
-    label: "Shop Phone Number (*)",
-    type: 'number',
-    isList: false,
-    colSize: 4,
-    error: Yup.number().required(`Please enter Shop number !`)
-  },
-  {
-    id: "shopDescription",
-    label: "Shop Description (*)",
-    type: 'text',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter shop description !`)
-  },
-  {
-    id: "shopStartTime",
-    label: "Shop Opening Time (*)",
-    type: 'time',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter shop start time !`)
-  },
-  {
-    id: "shopEndTime",
-    label: "Shop Closing Time (*)",
-    type: 'time',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter shop end time !`)
-  },
-  {
-    id: "gst",
-    label: "GST Number (optional)",
-    type: 'number',
-    isList: false,
-    colSize: 4
-  },
-  {
-    id: "phone",
-    label: "Phone Number (*)",
-    type: 'number',
-    isList: false,
-    colSize: 4,
-    error: Yup.number().required(`Please enter phone number!`)
-  },
-  {
-    id: "latitude",
-    label: "Latitude (*)",
-    type: 'number',
-    isList: false,
-    colSize: 4,
-    error: Yup.number().required(`Please enter latitute !`)
-
-  },
-  {
-    id: "longitude",
-    label: "Longitude (*)",
-    type: 'number',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter longitude !`)
-  },
-  {
-    id: "error",
-    label: "Error (meters)",
-    type: 'number',
-    isList: false,
-    colSize: 4
-  },
-  {
-    id: "password",
-    label: "Password (*)",
-    type: 'password',
-    isList: false,
-    colSize: 4,
-    error: Yup.string().required(`Please enter password !`)
-  },
-  {
-    id: "category",
-    label: "Category (*)",
-    type: 'text',
-    isList: true,
-    colSize: 4,
-    error: Yup.string().required(`Select a category !`)
   },
 ]
 
@@ -450,4 +327,138 @@ export const authRoutes = [
     route: 'wish list',
     access: ['customer']
   }
+]
+
+// new 
+
+export const sellerFields = [
+  {
+    name: 'firstname',
+    label: 'First Name',
+    type: 'text',
+    xs: 12,
+    sm: 6,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'lastname',
+    label: 'Surname Name',
+    type: 'text',
+    xs: 12,
+    sm: 6,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'phonenumber',
+    label: 'Contact Number',
+    type: 'number',
+    xs: 12,
+    sm: 6,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().matches(/^\d{10}$/, 'Mobile numberr must be exactly 10 digits').required(`Please enter  mobile number!`)
+  },
+  {
+    name: 'business',
+    label: 'Business Name',
+    type: 'text',
+    xs: 12,
+    sm: 6,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'opensat',
+    label: "Open's At",
+    type: 'time',
+    xs: 12,
+    sm: 6,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'closeeat',
+    label: "Closed At",
+    type: 'time',
+    xs: 12,
+    sm: 6,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'category',
+    label: 'Category',
+    type: 'text',
+    xs: 12,
+    sm: 6,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'address',
+    label: 'Address',
+    type: 'text',
+    xs: 12,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'email',
+    label: 'Email Address',
+    type: 'email',
+    xs: 12,
+    sm: 6,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'password',
+    label: 'Password',
+    type: 'text',
+    xs: 12,
+    sm: 12,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'gst',
+    label: 'GST',
+    type: 'text',
+    xs: 12,
+    sm: 12,
+    md: 4,
+    lg: 4,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
 ]

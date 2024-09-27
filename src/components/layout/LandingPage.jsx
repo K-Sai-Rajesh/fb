@@ -1,8 +1,40 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Grid2, IconButton, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardContent, CardMedia, Divider, Fab, Grid2, IconButton, Stack, Typography } from "@mui/material";
 import logo from '../../assets/images/ecombg.png'
-import React from "react";
+import React, { useRef } from "react";
+import { ArrowBackIosNewOutlined, ArrowForwardIosOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+
+const scrollStyling = {
+    ":: -webkit-scrollbar": {
+        width: "13px",
+        height: "0px"
+    },
+
+    ":: -webkit-scrollbar-thumb": {
+        background: "linear-gradient(13deg, #f9d4ff 14 %, #c7ceff 64 %)",
+        borderRadius: "10px"
+    },
+
+    ":: -webkit-scrollbar-thumb:hover": {
+        background: "linear - gradient(13deg, #c7ceff 14 %, #f9d4ff 64 %)"
+    },
+
+    ":: -webkit-scrollbar-track": {
+        background: "#aaa",
+        borderRadius: "10px",
+        boxShadow: "inset 7px 10px 12px #f0f0f0"
+    },
+    flexWrap: 'no-wrap',
+    overflow: 'auto',
+    scrollBehavior: 'smooth',
+    width: `${window.innerWidth}px`
+}
 
 export default function LandingPage() {
+    const containerRef = useRef()
+    const categoryRef = useRef()
+    const navigate = useNavigate()
+
     const cards = [
         {
             title: 'Mercedes - DataTrack',
@@ -25,6 +57,15 @@ export default function LandingPage() {
             image: 'https://www.codexosoftware.com/assets/img/ecommerce-development.png'
         }
     ]
+    const category = [
+        {
+            category: 'Furniture',
+            image: 'https://www.codexosoftware.com/assets/img/ecommerce-development.png'
+        }
+    ]
+    const scroll = (ref, scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    };
 
     return (
         <Grid2 container>
@@ -107,7 +148,7 @@ export default function LandingPage() {
                 </Stack>
             </Grid2>
 
-            <Grid2 size={{ xs: 12 }} py={{ xs: 5 }}>
+            <Grid2 size={{ xs: 12 }} py={{ xs: 5 }} position={'relative'}>
                 <Stack
                     spacing={{ xs: 1, sm: 1 }}
                     direction="row"
@@ -122,35 +163,63 @@ export default function LandingPage() {
                         Categories
                     </Typography>
                 </Stack>
+                <Fab
+                    sx={{
+                        position: 'absolute',
+                        top: 170,
+                        left: 50
+                    }}
+                    onClick={() => scroll(categoryRef, -300)}
+                >
+                    <ArrowBackIosNewOutlined />
+                </Fab>
                 <Stack
                     spacing={{
                         xs: 1,
                         sm: 1
                     }}
                     direction="row"
+                    ref={categoryRef}
                     rowGap={2}
+                    divider={<Divider orientation="vertical" sx={{ backgroundColor: '#aaa' }} flexItem />}
                     useFlexGap
-                    sx={{
-                        flexWrap: 'wrap',
-                        overflow: 'auto',
-                        justifyContent: 'center',
-                        width: '100%',
-                        p: 1
-                    }}
-                >
-                    <IconButton>
-                        <Avatar
-                            src="https://www.codexosoftware.com/assets/img/ecommerce-development.png"
-                            sx={{
-                                width: 145,
-                                height: 145
-                            }}
-                        />
-                    </IconButton>
+                    sx={scrollStyling}
+                >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    {
+                        category?.map((category, index) => (
+                            <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+                                <Typography variant="h6" align="center" gutterBottom sx={{ fontFamily: 'Raleway' }}>
+                                    <span style={{ color: "#2196F3" }}>{category?.category}</span>
+                                </Typography>
+                                <IconButton
+                                    key={index}
+                                    onClick={() => navigate(`/category/${category?.category}`)}
+                                >
+                                    <Avatar
+                                        src={category?.image}
+                                        sx={{
+                                            width: 145,
+                                            height: 145
+                                        }}
+                                    />
+                                </IconButton>
+                            </Box>
+                        ))
+                    }
                 </Stack>
+                <Fab
+                    sx={{
+                        position: 'absolute',
+                        top: 170,
+                        right: 50
+                    }}
+                    onClick={() => scroll(categoryRef, 300)}
+                >
+                    <ArrowForwardIosOutlined />
+                </Fab>
             </Grid2>
 
-            <Grid2 size={{ xs: 12 }} py={{ xs: 5 }}>
+            <Grid2 size={{ xs: 12 }} py={{ xs: 5 }} position={'relative'}>
                 <Stack
                     spacing={{ xs: 1, sm: 1 }}
                     direction="row"
@@ -165,22 +234,29 @@ export default function LandingPage() {
                         Our <span style={{ color: "#2196F3" }}>Partners</span>
                     </Typography>
                 </Stack>
+                <Fab
+                    sx={{
+                        position: 'absolute',
+                        top: 200,
+                        left: 50
+                    }}
+                    onClick={() => scroll(containerRef, -300)}
+                >
+                    <ArrowBackIosNewOutlined />
+                </Fab>
                 <Stack
                     spacing={{
                         xs: 1,
                         sm: 1
                     }}
+                    ref={containerRef}
+                    className="myscrollbar"
                     direction="row"
                     rowGap={2}
                     useFlexGap
-                    sx={{
-                        flexWrap: 'wrap',
-                        overflow: 'auto',
-                        justifyContent: 'center',
-                        width: '100%',
-                        p: 1
-                    }}
-                >
+                    py={2}
+                    sx={scrollStyling}
+                >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                     {cards.map((card, index) => (
                         <Card
                             key={index}
@@ -221,6 +297,16 @@ export default function LandingPage() {
                         </Card>
                     ))}
                 </Stack>
+                <Fab
+                    sx={{
+                        position: 'absolute',
+                        top: 200,
+                        right: 50
+                    }}
+                    onClick={() => scroll(containerRef, 300)}
+                >
+                    <ArrowForwardIosOutlined />
+                </Fab>
             </Grid2>
 
             <Grid2 size={{ xs: 12 }} py={{ xs: 5 }}>
@@ -251,7 +337,7 @@ export default function LandingPage() {
                         overflow: 'auto',
                         justifyContent: 'center',
                         width: '100%',
-                        p: 1
+                        py: 1
                     }}
                 >
                     {cards.map((card, index) => (
@@ -295,6 +381,6 @@ export default function LandingPage() {
                     ))}
                 </Stack>
             </Grid2>
-        </Grid2>
+        </Grid2 >
     )
 }
