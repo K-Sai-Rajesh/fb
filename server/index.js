@@ -6,7 +6,7 @@ import { db, jwt } from "./database.cjs";
 import fileUpload from "express-fileupload";
 import path from 'path'
 import { tablesList } from "./database.cjs";
-import { authMiddleware } from "./middlewares/middlewares.js";
+// import { authMiddleware } from "./middlewares/middlewares.js";
 import fs from 'fs'
 // import { v4 as uuidv4 } from 'uuid';
 
@@ -52,7 +52,26 @@ app.listen(8080, async () => {
                         }
                     })
                     );
-                    query = `insert into Register (firstname,lastname,shopName,shopPhoneNumber,shopDescription,shopStartTime,shopEndTime,gst,phone, email, userpassword,role,registered,appliedDate,status,error,latitude,longitude,category) VALUES ("firstname","lastname","shopName",7846574857,"shopDescription","9:00","10:00","gst",8756475847,"futurebazaar@gmail.com", "password","admin", "true", "2024-07-07", "Approved",1000,17.07464,76.03746,"Furniture");`
+                    query = `insert into users
+                            (
+                            first_name,
+                            last_name,
+                            shop_name,
+                            phone,
+                            shop_description,
+                            start_time,
+                            end_time,
+                            gst, 
+                            email, 
+                            user_password,
+                            role,
+                            status,
+                            error,
+                            lat,
+                            long,
+                            category
+                            ) VALUES ("firstname","lastname","shopName",7846574857,"shopDescription","9:00","10:00","gst",
+                             "futurebazaar@gmail.com", "password","admin", "true", 1000,17.07464,76.03746,"Furniture");`
                     await db.run(query)
                 } else {
                     tablesList.forEach(async table => {

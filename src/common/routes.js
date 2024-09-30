@@ -9,6 +9,13 @@ import Seller from "../components/pages/signup/seller";
 import MyLocation from "../components/pages/signup/seller/Location";
 import ProfilePicture from "../components/pages/signup/seller/ProfilePicture";
 import RegistrationStatus from "../components/pages/signup/seller/RegistrationStatus";
+import Category from "../components/pages/category/Category";
+import Customer from "../components/pages/signup/customer";
+import MyCustomerLocation from "../components/pages/signup/customer/Location";
+import CustomerProfilePicture from "../components/pages/signup/customer/ProfilePicture";
+import Products from "../components/pages/category/Products";
+import SellerPage from "../components/pages/category/Seller";
+import Users from "../components/pages/dashboard/Home";
 
 export const routes = [
   {
@@ -53,6 +60,27 @@ export const routes = [
             ]
           },
           {
+            path: 'customer',
+            children: [
+              {
+                path: 'details',
+                element: <Customer />
+              },
+              {
+                path: 'location',
+                element: <MyCustomerLocation />
+              },
+              {
+                path: 'profile picture',
+                element: <CustomerProfilePicture />
+              },
+              {
+                path: 'status',
+                element: <RegistrationStatus />
+              }
+            ]
+          },
+          {
             path: '',
             element: <Type />
           }
@@ -60,18 +88,31 @@ export const routes = [
       },
       {
         path: '/category/*',
-        element: <Login />
+        element: <Category />
+      },
+      {
+        path: '/product/*',
+        element: <Products />
+      },
+      {
+        path: '/seller/*',
+        element: <SellerPage />
       },
     ],
   },
   {
-    path: "/auth",
+    path: "/dashboard",
     element: (
       <Auth>
         <Outlet />
       </Auth>
     ),
-    children: [],
+    children: [
+      {
+        path: '',
+        element: <Users />
+      }
+    ]
   },
   {
     path: "dashboard/*",

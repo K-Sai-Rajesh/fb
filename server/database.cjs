@@ -47,30 +47,26 @@ const tablesList = [
         `
     },
     {
-        Register: `
-                CREATE TABLE "Register" (
-                "firstname"	TEXT NOT NULL,
-                "lastname"	TEXT NOT NULL,
-                "phone"	REAL NOT NULL,
-                "userpassword"	TEXT NOT NULL,
-                "email"	TEXT NOT NULL,
+        users: `
+            CREATE TABLE "users" (
                 "id"	INTEGER NOT NULL UNIQUE,
-                "role"	TEXT NOT NULL,
-                "registered"	TEXT NOT NULL,
-                "appliedDate"	TEXT,
-                "approvedDate"	TEXT,
-                "status"	TEXT,
-                "shopEndTime"	TEXT NOT NULL,
-                "shopStartTime"	TEXT NOT NULL,
-                "shopDescription"	TEXT NOT NULL,
-                "shopPhoneNumber"	REAL NOT NULL,
-                "shopName"	TEXT NOT NULL,
+                "first_name"	TEXT,
+                "last_name"	TEXT,
+                "phone"	REAL,
+                "user_password"	TEXT,
+                "email"	TEXT,
+                "long"	TEXT,
+                "lat"	TEXT,
+                "status"	INTEGER,
+                "shop_name"	TEXT,
+                "role"	TEXT,
                 "gst"	TEXT,
-                "error"	REAL,
-                "latitude"	REAL,
-                "longitude"	REAL,
-                "propic"	TEXT,
                 "category"	TEXT,
+                "error"	TEXT,
+                "shop_description"	TEXT,
+                "start_time"	TEXT,
+                "end_time"	TEXT,
+                "profile_url"	TEXT,
                 PRIMARY KEY("id" AUTOINCREMENT)
             );
         `

@@ -5,7 +5,8 @@ const loadingSlice = createSlice({
   initialState: {
     load: false,
     header: null,
-    footer: null
+    footer: null,
+    dashboardheader: null
   },
   reducers: {
     loadon: (state, { payload }) => {
@@ -26,6 +27,12 @@ const loadingSlice = createSlice({
         header: payload,
       };
     },
+    setdashboardheader: (state, { payload }) => {
+      return {
+        ...state,
+        dashboardheader: payload,
+      };
+    },
     setfooter: (state, { payload }) => {
       return {
         ...state,
@@ -35,6 +42,6 @@ const loadingSlice = createSlice({
   },
 });
 
-export const { loadon, loadoff, setheader, setfooter } = loadingSlice.actions;
+export const { loadon, loadoff, setheader, setfooter, setdashboardheader } = loadingSlice.actions;
 
 export default loadingSlice.reducer;

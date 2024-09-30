@@ -3,7 +3,6 @@ import { config } from "../../helpers/config";
 import client from "../../helpers/client";
 import { snackon } from "./snackbar";
 import { loadoff, loadon } from "./loading";
-import { clearSession } from "../../helpers/cookies";
 
 export const Register = createAsyncThunk(
   "register",
@@ -13,6 +12,7 @@ export const Register = createAsyncThunk(
       const url = `${config.BASE_API}/register`;
       const response = await client.post(url, params);
       dispatch(snackon({ message: response?.message, color: response?.isSuccess ? 'success' : 'warning' }));
+      response?.isSuccess && sessionStorage.clear('seller')
       return Promise.resolve(response);
     } catch (error) {
       dispatch(snackon({ message: error?.message, color: 'error' }));

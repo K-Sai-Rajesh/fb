@@ -1,7 +1,6 @@
 import { Avatar, Box, Breadcrumbs, Chip, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { button } from "../../helpers/features";
-import { SpaceDashboardOutlined } from "@mui/icons-material";
+import { PersonOutlineOutlined, SpaceDashboardOutlined } from "@mui/icons-material";
 import { useEffect, useRef } from "react";
 import { setheader } from "../../reducers/slices/loading";
 import { useDispatch } from "react-redux";
@@ -11,10 +10,12 @@ export default function HeaderNavbar({ setOpen }) {
 
     const header = useRef()
     const navigate = useNavigate()
+    // eslint-disable-next-line
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(setheader(header.current))
+        // eslint-disable-next-line
     }, [header])
 
     return (
@@ -53,7 +54,7 @@ export default function HeaderNavbar({ setOpen }) {
                     >
                         <Typography
                             fontFamily={'Raleway'}
-                            color="#aaa"
+                            color="#fff"
                             fontSize={'12px'}
                             fontWeight={'bold'}
                             textTransform={'capitalize'}
@@ -84,7 +85,7 @@ export default function HeaderNavbar({ setOpen }) {
                                 textDecorationLine: 'none'
                             }}
                         >
-                            <Chip label="Login" sx={button} />
+                            <Chip label="Login" color='primary' variant="contained" />
                         </Link>
                         <Link
                             to={'/signup'}
@@ -104,14 +105,35 @@ export default function HeaderNavbar({ setOpen }) {
                         </Link>
                     </Breadcrumbs>
                 </Stack>
-                <IconButton
-                    onClick={() => setOpen(true)}
+
+                <Stack
+                    spacing={{ xs: 1 }}
+                    direction="row"
+                    useFlexGap
                     sx={{
+                        flexWrap: 'wrap',
+                        justifyContent: "center",
+                        alignItems: "start",
                         display: { xs: 'flex', md: 'none' }
                     }}
                 >
-                    <SpaceDashboardOutlined sx={{ color: '#fff' }} />
-                </IconButton>
+                    <IconButton
+                        onClick={() => setOpen(true)}
+                        sx={{
+                            display: { xs: 'flex', md: 'none' }
+                        }}
+                    >
+                        <PersonOutlineOutlined sx={{ color: '#fff' }} />
+                    </IconButton>
+                    <IconButton
+                        onClick={() => setOpen(true)}
+                        sx={{
+                            display: { xs: 'flex', md: 'none' }
+                        }}
+                    >
+                        <SpaceDashboardOutlined sx={{ color: '#fff' }} />
+                    </IconButton>
+                </Stack>
             </Box>
         </Toolbar>
     )

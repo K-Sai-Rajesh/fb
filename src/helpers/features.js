@@ -462,3 +462,70 @@ export const sellerFields = [
     error: Yup.string().required("Field can't be empty !")
   },
 ]
+
+export const customerFields = [
+  {
+    name: 'firstname',
+    label: 'First Name',
+    type: 'text',
+    xs: 12,
+    sm: 4,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'lastname',
+    label: 'Surname Name',
+    type: 'text',
+    xs: 12,
+    sm: 4,
+    md: 3,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'email',
+    label: 'Email Address',
+    type: 'email',
+    xs: 12,
+    sm: 4,
+    md: 4,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'password',
+    label: 'Password',
+    type: 'text',
+    xs: 12,
+    sm: 12,
+    md: 4,
+    lg: 3,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+  {
+    name: 'address',
+    label: 'Address',
+    type: 'text',
+    xs: 12,
+    isList: false,
+    disable: false,
+    error: Yup.string().required("Field can't be empty !")
+  },
+]
+
+export const images = [
+  'https://mui.com/static/images/avatar/1.jpg',
+  'https://mui.com/static/images/avatar/2.jpg',
+  'https://mui.com/static/images/avatar/3.jpg',
+  // Add more image URLs as needed
+];

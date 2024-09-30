@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { Box, Chip, Grid2, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function MyLocation() {
+export default function MyCustomerLocation() {
     // eslint-disable-next-line
     const { state } = useLocation()
-    const seller = sessionStorage.getItem('seller')
+    const customer = sessionStorage.getItem('customer')
     // eslint-disable-next-line
     const [location, setLocation] = useState(state === null ? { latitude: 17.746, longitude: 78.3736 } : state)
     const navigate = useNavigate()
@@ -61,8 +61,8 @@ export default function MyLocation() {
                         color="primary"
                         variant="contained"
                         onClick={() => {
-                            sessionStorage.setItem('seller', JSON.stringify({ ...JSON.parse(decodeURIComponent(seller)), coords: state }))
-                            navigate('/signup/seller/profile picture')
+                            sessionStorage.setItem('customer', JSON.stringify({ ...JSON.parse(decodeURIComponent(customer)), coords: state }))
+                            navigate('/signup/customer/profile picture')
                         }}
                         sx={{
                             width: { xs: '100%', sm: 300, lg: 500 },

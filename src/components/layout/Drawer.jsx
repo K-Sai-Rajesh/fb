@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Breadcrumbs, Chip, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { button } from '../../helpers/features';
 
 const drawerBleeding = 56;
 
@@ -83,46 +81,7 @@ function SwipeableEdgeDrawer({ window, open, toggleDrawer }) {
                             alignItems: "start",
                         }}
                     >
-                        <Link
-                            to={'/'}
-                            style={{
-                                textDecorationLine: 'none'
-                            }}
-                        >
-                            <Typography
-                                fontFamily={'Raleway'}
-                                color="#aaa"
-                                fontSize={'12px'}
-                                fontWeight={'bold'}
-                                textTransform={'capitalize'}
-                                sx={{
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                home
-                            </Typography>
-                        </Link>
-                    </Stack>
-                    <br />
-                    <Stack
-                        spacing={{ xs: 1 }}
-                        direction="row"
-                        useFlexGap
-                        sx={{
-                            flexWrap: 'wrap',
-                            justifyContent: "center",
-                            alignItems: "start",
-                        }}
-                    >
                         <Breadcrumbs aria-label="breadcrumb" sx={{ color: '#fff' }}>
-                            <Link
-                                to={'/login'}
-                                style={{
-                                    textDecorationLine: 'none'
-                                }}
-                            >
-                                <Chip label="Login" sx={button} />
-                            </Link>
                             <Link
                                 to={'/signup'}
                                 style={{
