@@ -32,7 +32,7 @@ export default function CustomerProfilePicture() {
             const file = e.target.files[0]
             convertToBase64(file)
                 .then(base64String => {
-                    let customernew = JSON.stringify({ ...JSON.parse(decodeURIComponent(customer)), picture_file: base64String, type: file.type, file_name: file?.name })
+                    let customernew = JSON.stringify({ ...JSON.parse(decodeURIComponent(customer)), role: 'customer', picture_file: base64String, type: file.type, file_name: file?.name })
                     setPropic(base64String)
                     sessionStorage.setItem('customer', customernew)
                 })

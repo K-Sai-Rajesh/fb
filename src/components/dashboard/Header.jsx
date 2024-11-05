@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LogoutOutlined, SpaceDashboardOutlined } from "@mui/icons-material";
 import { useRef } from "react";
 import logo from '../../assets/images/futurebazaar.png'
+import { clearSession } from "../../helpers/cookies";
 
 export default function Header({ setOpen }) {
 
@@ -52,7 +53,7 @@ export default function Header({ setOpen }) {
                 >
                     <Breadcrumbs aria-label="breadcrumb" sx={{ color: '#fff' }}>
                         <Link
-                            to={'/'}
+                            onClick={() => clearSession(true)}
                             style={{
                                 textDecorationLine: 'none'
                             }}
@@ -62,7 +63,7 @@ export default function Header({ setOpen }) {
                     </Breadcrumbs>
                 </Stack>
                 <IconButton
-                    onClick={() => navigate(-1)}
+                    onClick={() => clearSession(true)}
                     sx={{
                         display: { xs: 'flex', md: 'none' }
                     }}

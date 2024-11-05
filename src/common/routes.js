@@ -16,6 +16,10 @@ import CustomerProfilePicture from "../components/pages/signup/customer/ProfileP
 import Products from "../components/pages/category/Products";
 import SellerPage from "../components/pages/category/Seller";
 import Users from "../components/pages/dashboard/Home";
+import DashboardProducts from "../components/pages/dashboard/products/Products";
+import ProductBar from "../components/pages/dashboard/productbar";
+import CrudProduct from "../components/pages/dashboard/products/CrudProduct";
+import MyGeoLocation from "../components/pages/category/MyLocation";
 
 export const routes = [
   {
@@ -25,6 +29,10 @@ export const routes = [
       {
         path: '',
         element: <LandingPage />
+      },
+      {
+        path: 'location',
+        element: <MyGeoLocation />
       },
       {
         path: '/login',
@@ -117,5 +125,33 @@ export const routes = [
   {
     path: "dashboard/*",
     // element: <NotFound />,
+  },
+  {
+    path: "products",
+    element: (
+      <Auth>
+        <Outlet />
+      </Auth>
+    ),
+    children: [
+      {
+        path: "",
+        element: <ProductBar />,
+        children: [
+          {
+            path: '',
+            element: <DashboardProducts />
+          },
+          {
+            path: 'add product',
+            element: <CrudProduct />
+          },
+          {
+            path: 'update product',
+            element: <CrudProduct />
+          }
+        ]
+      }
+    ]
   },
 ];

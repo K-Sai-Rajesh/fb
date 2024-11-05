@@ -1,5 +1,6 @@
-import { db } from "../database.cjs";
+import { db, jwt } from "../database.cjs";
 import { getData } from "./functions.js";
+const secret_key = "future_bazaar";
 
 export const authMiddleware = async (req, res, next) => {
     try {

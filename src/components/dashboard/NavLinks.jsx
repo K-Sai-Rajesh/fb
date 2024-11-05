@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpaceDashboardRounded } from '@mui/icons-material';
+import { Inventory2Outlined, SpaceDashboardRounded } from '@mui/icons-material';
 
 const navLinks = [
     {
@@ -8,12 +8,12 @@ const navLinks = [
         icon: <SpaceDashboardRounded />,
         subpath: ['dashboard']
     },
-    // {
-    //     name: 'Store',
-    //     path: '/stores',
-    //     icon: <StorefrontSharp />,
-    //     subpath: ['add floor cameras', 'add floor camera virtualine', 'stores', 'view', 'create%20store', 'preview', 'edit%20store', 'client%20details', 'store%20details', 'camera%20details', 'virtual%20line']
-    // },
+    {
+        name: 'products',
+        path: '/products',
+        icon: <Inventory2Outlined />,
+        subpath: ['products', 'add product', 'update product', 'stores', 'view', 'create%20store', 'preview', 'edit%20store', 'client%20details', 'store%20details', 'camera%20details', 'virtual%20line']
+    },
     // {
     //     name: 'List',
     //     path: '/organisation',

@@ -529,3 +529,16 @@ export const images = [
   'https://mui.com/static/images/avatar/3.jpg',
   // Add more image URLs as needed
 ];
+
+export function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+          resolve(reader.result);
+      };
+      reader.onerror = (error) => {
+          reject(error);
+      };
+      reader.readAsDataURL(file);
+  });
+}

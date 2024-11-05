@@ -3,10 +3,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
-// import Toolbar from '@mui/material/Toolbar';
-// import IconButton from '@mui/material/IconButton';
-// import logo from '../../assets/images/futurebazaar.png'
-// import { Avatar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import SideNav from './Sidebar';
 import Header from './Header';

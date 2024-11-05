@@ -7,15 +7,18 @@ import { loadoff, loadon } from "./loading";
 
 export const signIn = createAsyncThunk(
     "signIn",
-    async (params, { rejectWithValue, dispatch }) => {
+    async ({ params, navigate }, { rejectWithValue, dispatch }) => {
         try {
             dispatch(loadon(true));
             const url = `${config.BASE_API}/login`;
             const response = await client.post(url, params);
             setSession(response);
+            console.log(response)
+            dispatch(snackon({ message: response?.message, color: response?.isSuccess ? 'success' : 'warning' }))
+            response?.isSuccess && navigate('/dashboard')
             return Promise.resolve(response);
         } catch (error) {
-            dispatch(snackon({ message: error, color: 'error' }));
+            dispatch(snackon({ message: error.message, color: 'error' }));
             return rejectWithValue(error);
         } finally {
             dispatch(loadoff(false));

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { snackon } from "../../../../reducers/slices/snackbar";
 import { Register } from "../../../../reducers/slices/register";
+import { convertToBase64 } from "../../../../helpers/features";
 
 export default function ProfilePicture() {
     const seller = sessionStorage.getItem('seller')
@@ -14,25 +15,12 @@ export default function ProfilePicture() {
     const [propic, setPropic] = useState(seller === null ? logo : JSON.parse(decodeURIComponent(seller))?.picture_file);
     const dispatch = useDispatch()
 
-    function convertToBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                resolve(reader.result);
-            };
-            reader.onerror = (error) => {
-                reject(error);
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
     function handleProPicChange(e) {
         try {
             const file = e.target.files[0]
             convertToBase64(file)
                 .then(base64String => {
-                    let sellernew = JSON.stringify({ ...JSON.parse(decodeURIComponent(seller)), picture_file: base64String, type: file.type, file_name: file?.name })
+                    let sellernew = JSON.stringify({ ...JSON.parse(decodeURIComponent(seller)), picture_file: base64String, role: 'seller', type: file.type, file_name: file?.name })
                     setPropic(base64String)
                     sessionStorage.setItem('seller', sellernew)
                 })
